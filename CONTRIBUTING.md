@@ -22,3 +22,10 @@ Docker compose command:
 `flask db init`  
 `flask db migrate`  
 `flask db upgrade`
+
+## Locally run docker compose and local postgres db inside it
+Send HTTP requests to:  
+http://127.0.0.1:5000
+
+## Deployment is on render.com with docker and postgres db
+https://flask-rest-api-0pb1.onrender.com
