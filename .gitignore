@@ -5,6 +5,7 @@ __pycache__
 data.db
 *.pyc
 .DS_Store
+.env
 
 # Created by http://www.gitignore.io
 

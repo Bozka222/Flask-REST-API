@@ -6,4 +6,4 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 # Copy all files from First_REST_API to current working directory
 COPY . .
 # Run commands
-CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:create_app()"]
+CMD ["/bin/bash", "docker-entrypoint.sh"]
