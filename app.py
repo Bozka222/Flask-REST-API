@@ -4,10 +4,11 @@ from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 from db import db
 from blocklist import BLOCKLIST
+
 from resources.store import blp as store_blueprint
 from resources.item import blp as item_blueprint
 from resources.tag import blp as tag_blueprint
@@ -28,6 +29,10 @@ def create_app(db_url=None):  # Default name
     app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv("DATABASE_URL", "sqlite:///data.db")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)  # Connects flask app to SQL Alchemy
+
+    with app.app_context():  # Before first request
+        db.create_all()  # Create all database tables (if they don't already exist)
+
     migrate = Migrate(app, db)  # Needs to be here
     api = Api(app)
 

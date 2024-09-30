@@ -15,6 +15,7 @@ Or just use:
 
 Docker compose command:  
 `docker compose up`  
+`docker compose up -d` # run on background as daemon  
 `docker compose up --build --force-recreate --no-deps web`  
 `docker compose up --build --force-recreate --no-deps db`
 
@@ -29,3 +30,6 @@ http://127.0.0.1:5000
 
 ## Deployment is on render.com with docker and postgres db
 https://flask-rest-api-0pb1.onrender.com
+
+## Delete whole database
+`docker compose down -v`
